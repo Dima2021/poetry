@@ -81,6 +81,7 @@ jobs:
           WS_PYTHON_IGNOREPIPENVINSTALLERRORS: false
           WS_PYTHON_RUNPOETRYPRESTEP: false
           WS_PYTHON_PATH: python3
+          WS_EXCLUDES: '**/build/** **/test*/**'
         run: |
           curl -LJO https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar
           echo Unified Agent downloaded successfully
