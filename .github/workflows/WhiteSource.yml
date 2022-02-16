@@ -73,6 +73,14 @@ jobs:
           WS_PRODUCTNAME: GH_${{github.event.repository.name}}
           WS_PROJECTNAME: ${{github.ref}}_Prioritize
           WS_FILESYSTEMSCAN: false
+          WS_PYTHON_IGNOREPIPINSTALLERRORS: true
+          WS_PYTHON_INSTALLVIRTUALENV: true
+          WS_PYTHON_RESOLVESETUPPYFILES: true
+          WS_PYTHON_RUNPIPENVPRESTEP: true
+          WS_PYTHON_PIPENVDEVDEPENDENCIES: true
+          WS_PYTHON_IGNOREPIPENVINSTALLERRORS: true
+          WS_PYTHON_RUNPOETRYPRESTEP: true
+          WS_PYTHON_PATH: python3
         run: |
           curl -LJO https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar
           echo Unified Agent downloaded successfully
