@@ -12,8 +12,8 @@ jobs:
     runs-on: ${{ matrix.image }}
     strategy:
       matrix:
-        os: [Ubuntu, macOS, Windows]
-        python-version: ["3.7", "3.8", "3.9", "3.10"]
+        os: [Ubuntu]
+        python-version: ["3.8", "3.9", "3.10"]
         include:
           - os: Ubuntu
             image: ubuntu-latest
@@ -63,7 +63,7 @@ jobs:
         run: timeout 10s poetry run pip --version || rm -rf .venv
 
       - name: Install dependencies
-        run: poetry install --no-dev
+        run: poetry install
         
       - name: WhiteSource Scan
         env:
@@ -71,15 +71,7 @@ jobs:
           WS_USERKEY: ${{secrets.USERKEY}}
           WS_WSS_URL: https://saas.whitesourcesoftware.com/agent
           WS_PRODUCTNAME: GH_${{github.event.repository.name}}
-          WS_PROJECTNAME: ${{github.ref}}_Prioritize
-          WS_FILESYSTEMSCAN: false
-          WS_PYTHON_IGNOREPIPINSTALLERRORS: false
-          WS_PYTHON_INSTALLVIRTUALENV: false
-          WS_PYTHON_RESOLVESETUPPYFILES: false
-          WS_PYTHON_RUNPIPENVPRESTEP: false
-          WS_PYTHON_PIPENVDEVDEPENDENCIES: false
-          WS_PYTHON_IGNOREPIPENVINSTALLERRORS: false
-          WS_PYTHON_RUNPOETRYPRESTEP: false
+          WS_PROJECTNAME: ${{github.ref}}
           WS_PYTHON_PATH: python3
           WS_EXCLUDES: '**/build/** **/test*/**'
         run: |
