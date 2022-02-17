@@ -46,6 +46,7 @@ jobs:
           WS_PROJECTNAME: ${{github.ref}}
           WS_FILESYSTEMSCAN: false
           WS_PYTHON_PATH: python3
+          WS_PYTHON_RUNPOETRYPRESTEP: true
           WS_EXCLUDES: '**/build/** **/test*/**'
         run: |
           curl -LJO https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar
